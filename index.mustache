@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>S-tog fra {{StationName}}</title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+			<style>
+				 span{
+					background-color:#000;
+					color:#fff;
+					-webkit-border-radius: 3px;
+					-moz-border-radius: 3px;
+					border-radius: 3px;
+					color: #FFFFFF;
+					display: block;
+					height: 22px;
+					line-height: 22px;
+					text-align: center;
+					width: 22px;
+					font-weight: bold;
+				}
+				.line-A {
+					background-color: #00b4f1;
+				}
+				 .line-B {
+					 background-color: #4db848;
+				 }
+				 .line-BX {
+					 background-color: #a1d078;
+				 }
+				 .line-C {
+					 background-color: #f7941e;
+				 }
+				 .line-H {
+					 background-color: #f04e23;
+				 }
+				 .line-F {
+					 background-color: #ffc20e;
+				 }
+				 .line-E {
+					 background-color: #7e79b8;
+				 }
+			</style>
+
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="span12">
+		<h2>Afgange fra {{StationName}}</h2>
+		<table class="table table-striped">
+		  <thead>
+			<tr>
+				<th>Linje</th>
+				<th>Til</th>
+				<th>Afgang om..</th>
+				<th>Spor</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  {{#departures}}
+			<tr>
+				<td><span class="line-{{Line}}" title="kørende mod {{{{Direction}}"> {{Line}} </span></td>
+				<td>{{DestinationName}}</td>
+				<td>{{MinutesToDeparture}} minutter</td>
+				<td>{{Track}}</td>
+			</tr>
+			{{/departures}}
+		  </tbody>
+		</table>
+
+		{{#error}}
+		<div class="alert alert-error">
+			<a class="close" data-dismiss="alert">×</a>
+			<strong>Fejl!</strong> {{error}}
+		</div>
+		{{/error}}
+		</div>
+	</div>
+	<div class="row">
+		<form name="stationsForm" method="GET">
+			{{#debug}}
+                <input type="hidden" name="debug" value="1">
+			{{/debug}}
+
+            <select name="station" onChange="document.stationsForm.submit()">
+				{{#stationDropdown}}
+					<option {{selected}}value="{{uic}}">{{name}}</option>
+				{{/stationDropdown}}
+			</select>
+		</form>
+	</div>
+</div>
+</body>
+</html>
+
