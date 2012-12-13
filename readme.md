@@ -23,7 +23,7 @@ Denne applikation benytter følgende kilder/dele:
 
 Andet
 -----
-* Din PHP installation skal kunne anvende Cur (det kan de fleste webhoteller uden videre).
+* Din PHP installation skal kunne anvende Curl (det kan de fleste webhoteller uden videre).
 * Denne PHP er udviklet under PHP 5.4.9, men bør i hvert fald fungere under alle versioner tilbage til PHP 5.2.
 
 
@@ -31,8 +31,8 @@ Udeståender og fejl
 -------------------
 Det er ikke utænkeligt, at denne applikation udvides overtid med en eller flere af følgende funktionaliteter:
 
-* Cookie til at huske en default station - lige nu er Sydhavnen lagt ind som fast standard.
 * Hvis der er ikke kommer svar fra DSBLab eller det ikke indeholder noget meningsfyldt, tages der ikke pænt hånd om dette.
+* Der er nogle encoding problemer mellem Latin1 (ISO-8859-1) og UTF8.
 
 Hvis du har forslag eller ønsker, er du velkommen til at bidrage med kode eller indrapportere det via Issues på Github, som du finder på:
 https://github.com/mahler/perronskilt/issues

@@ -1,7 +1,7 @@
 <?php
 /**
- * Denne fil downloader stationer fra dsb med henblik på at finde stationernes UIC nummer.
- * Vi er kun interesseret i s-tog, hvorfor stationer vælges ud fra en whiteliste, der findes
+ * Denne fil downloader stationer fra dsb med henblik pÃ¥ at finde stationernes UIC nummer.
+ * Vi er kun interesseret i s-tog, hvorfor stationer vÃ¦lges ud fra en whiteliste, der findes
  * i den lokale fil "stations.txt".
  */
 $targetFilename = 'stations.csv';
