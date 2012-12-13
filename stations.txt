@@ -2,20 +2,20 @@
 # http://trafikinfo.bane.dk/Trafikinformation/Stationsliste
 Danmark
 Albertslund
-Allerød
-Avedøre
-Bagsværd
+AllerÃ¸d
+AvedÃ¸re
+BagsvÃ¦rd
 Ballerup
 Bernstorffsvej
-Birkerød
+BirkerÃ¸d
 Bispebjerg
-Brøndby Strand
-Brøndbyøster
+BrÃ¸ndby Strand
+BrÃ¸ndbyÃ¸ster
 Buddinge
 Charlottenlund
-Danshøj
-Dybbølsbro
-Dyssegård
+DanshÃ¸j
+DybbÃ¸lsbro
+DyssegÃ¥rd
 Egedal
 Ellebjerg
 Emdrup
@@ -28,64 +28,64 @@ Fuglebakken
 Gentofte
 Glostrup
 Greve
-Grøndal
+GrÃ¸ndal
 Hareskov
 Hellerup
 Herlev
-Hillerød
+HillerÃ¸d
 Holte
 Hundige
 Husum
 Hvidovre
-Høje Taastrup
-Ishøj
+HÃ¸je Taastrup
+IshÃ¸j
 Islev
 Jersie
 Jyllingevej
-Jægersborg
+JÃ¦gersborg
 K B Hallen
 Karlslunde
 Kildebakke
 Kildedal
 Klampenborg
-København
-Køge
+KÃ¸benhavn
+KÃ¸ge
 Langgade
 Lindevang
 Lyngby
 Malmparken
-Måløv
+MÃ¥lÃ¸v
 Nordhavn
 Ny Ellebjerg
-Nørrebro
-Nørreport
+NÃ¸rrebro
+NÃ¸rreport
 Ordrup
 Peter Bangs Vej
 Ryparken
-Rødovre
-Sjælør
-Skelbæk
+RÃ¸dovre
+SjÃ¦lÃ¸r
+SkelbÃ¦k
 Skovbrynet
 Skovlunde
-Solrød Strand
+SolrÃ¸d Strand
 Sorgenfri
-Stengården
-Stenløse
-Svanemøllen
+StengÃ¥rden
+StenlÃ¸se
+SvanemÃ¸llen
 Sydhavn
 Taastrup
 Valby
-Vallensbæk
+VallensbÃ¦k
 Vangede
-Vanløse
-Veksø
+VanlÃ¸se
+VeksÃ¸
 Vesterport
 Vigerslev Alle
 Virum
-Værløse
-Ølby
-Ølsemagle
-Ølstykke
-Østerport
-Ålholm
-Åmarken
+VÃ¦rlÃ¸se
+Ãlby
+Ãlsemagle
+Ãlstykke
+Ãsterport
+Ãlholm
+Ãmarken
