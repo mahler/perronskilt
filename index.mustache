@@ -4,19 +4,20 @@
 	<title>S-tog fra {{StationName}}</title>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 			<style>
-				 span{
+				 span {
 					background-color:#000;
 					color:#fff;
 					-webkit-border-radius: 3px;
 					-moz-border-radius: 3px;
 					border-radius: 3px;
 					color: #FFFFFF;
-					display: block;
+					display: inline;
 					height: 22px;
 					line-height: 22px;
 					text-align: center;
 					width: 22px;
 					font-weight: bold;
+					padding: 5px;
 				}
 				.line-A {
 					background-color: #00b4f1;
@@ -50,8 +51,7 @@
 		<table class="table table-striped">
 		  <thead>
 			<tr>
-				<th>Linje</th>
-				<th>Til</th>
+				<th>Linje (mod)</th>
 				<th>Afgang om..</th>
 				<th>Spor</th>
 			</tr>
@@ -59,9 +59,8 @@
 		  <tbody>
 		  {{#departures}}
 			<tr>
-				<td><span class="line-{{Line}}" title="kørende mod {{{{Direction}}"> {{Line}} </span></td>
-				<td>{{DestinationName}}</td>
-				<td>{{MinutesToDeparture}} minutter</td>
+				<td><span class="line-{{Line}}" title="kørende mod {{{{Direction}}"> {{Line}} </span>&nbsp;{{DestinationName}}</td>
+				<td>{{MinutesToDeparture}} min.</td>
 				<td>{{Track}}</td>
 			</tr>
 			{{/departures}}
