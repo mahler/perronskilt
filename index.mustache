@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>S-tog fra {{StationName}}</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 			<style>
 				 span {
@@ -59,7 +60,7 @@
 		  <tbody>
 		  {{#departures}}
 			<tr>
-				<td><span class="line-{{Line}}" title="kÃ¸rende mod {{{{Direction}}"> {{Line}} </span>&nbsp;{{DestinationName}}</td>
+				<td><span class="line-{{Line}}" title="kørende mod {{{{Direction}}"> {{Line}} </span>&nbsp;{{DestinationName}}</td>
 				<td>{{MinutesToDeparture}} min.</td>
 				<td>{{Track}}</td>
 			</tr>
@@ -69,7 +70,7 @@
 
 		{{#error}}
 		<div class="alert alert-error">
-			<a class="close" data-dismiss="alert">Ã</a>
+			<a class="close" data-dismiss="alert">X</a>
 			<strong>Fejl!</strong> {{error}}
 		</div>
 		{{/error}}

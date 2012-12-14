@@ -8,14 +8,15 @@ The code here should be considered for fun only, and not suited for production u
 
 Perronskilt
 ===========
-FÃ¸lgende filer indeholder en miniature applikation skrevet i PHP, som benytter Mustache templates, Bootstrap CSS og DSBLabs API, der giver adgang til at hente blandt andet de kommende afgange for en given station. Du kan med "Perronskilt" vise en enkelt webside, hvor de kommende tog vises i en simpel tabel.
+Følgende filer indeholder en miniature applikation skrevet i PHP, som benytter Mustache templates, 
+Bootstrap CSS og DSBLabs API, der giver adgang til at hente blandt andet de kommende afgange for en 
+given station. Du kan med "Perronskilt" vise en enkelt webside, hvor de kommende tog vises i en simpel tabel.
 
-Koden her er lavet som en simpel demonstration, ikke noget, der er tiltÃ¦nkt egentlig produktion. 
+Koden her er lavet som en simpel demonstration, ikke noget, der er tiltænkt egentlig produktion. 
 
 Kilder
 ------
-Denne applikation benytter fÃ¸lgende kilder/dele:
-
+Denne applikation benytter følgende kilder/dele:
 * Listen af s-tog stationer, der findes i stations.txt stammer fra http://trafikinfo.bane.dk/Trafikinformation/Stationsliste
 * Mustache.php kommer fra https://github.com/bobthecow/mustache.php - Den vedlagte version er en gammel version, som bestod af en og kun en fil.
 * De brugte kald til DSB Labs er beskrevet/dokumenteret pÃ¥ http://dsblabs.dk/webservices
@@ -24,23 +25,23 @@ Denne applikation benytter fÃ¸lgende kilder/dele:
 Andet
 -----
 * Din PHP installation skal kunne anvende Curl (det kan de fleste webhoteller uden videre).
-* Denne PHP er udviklet under PHP 5.4.9, men bÃ¸r i hvert fald fungere under alle versioner tilbage til PHP 5.2.
+* Denne PHP er udviklet under PHP 5.4.9, men bør i hvert fald fungere under alle versioner tilbage til PHP 5.2.
 
 
-UdestÃ¥ender og fejl
+Udeståender og fejl
 -------------------
-Det er ikke utÃ¦nkeligt, at denne applikation udvides overtid med en eller flere af fÃ¸lgende funktionaliteter:
+Det er ikke utænkeligt, at denne applikation udvides overtid med en eller flere af følgende funktionaliteter:
 
-* Hvis der er ikke kommer svar fra DSBLab eller det ikke indeholder noget meningsfyldt, tages der ikke pÃ¦nt hÃ¥nd om dette.
+* Hvis der er ikke kommer svar fra DSBLab eller det ikke indeholder noget meningsfyldt, tages der ikke pænt hånd om dette.
 * Der er nogle encoding problemer mellem Latin1 (ISO-8859-1) og UTF8.
 
-Hvis du har forslag eller Ã¸nsker, er du velkommen til at bidrage med kode eller indrapportere det via Issues pÃ¥ Github, som du finder pÃ¥:
+Hvis du har forslag eller ønsker, er du velkommen til at bidrage med kode eller indrapportere det via Issues på Github, som du finder på:
 https://github.com/mahler/perronskilt/issues
 
 
 Credits and collaboration
 =========================
-* CSS hjÃ¦lp venligst ydet af https://twitter.com/Pattersson
+* CSS hjælp venligst ydet af https://twitter.com/Pattersson
 
 License
 =======
@@ -60,8 +61,3 @@ ALIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, O
 IN THE SOFTWARE.
 
 - http://opensource.org/licenses/mit-license.php
-
-
-
-D
-All original code here is licensed under the MIT License - http://opensource.org/licenses/mit-license.php

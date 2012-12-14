@@ -11,7 +11,7 @@ if (isset($_GET['debug'])) {
 }
 
 if (isset($_GET['forceUpdate'])) {
-	/* Hvis forceUpdate, sÃ¥ sletter vi filen med stationsnavne -> UIC kode filen */
+	/* Hvis forceUpdate, så sletter vi filen med stationsnavne -> UIC kode filen */
 	unlink($stationsFile);
 }
 
@@ -22,31 +22,32 @@ if (!file_exists($stationsFile)) {
 
 /**
  * stationuic 8600760 er Sydhavn s-tog station.
- * se mere pÃ¥ http://dsblabs.dk/webservices/webservicestationsafgange
- * se mere om oData pÃ¥ http://www.odata.org/documentation/uri-conventions
+ * se mere på http://dsblabs.dk/webservices/webservicestationsafgange
+ * se mere om oData på http://www.odata.org/documentation/uri-conventions
  **/
 $stationUic  = 8600760;
 $stationName = 'Sydhavn';
 
 /**
  * Cookie manager bruges til at huske seneste sete station.
- * Ãnskes denne funktionalitet ikke, kan den blot udkommenteres.
- * cookieManager kan opdatere vÃ¦rdien af $stationUic, hvis der er en gemt vÃ¦rdi.
+ * Ønskes denne funktionalitet ikke, kan den blot udkommenteres.
+ * cookieManager kan opdatere værdien af $stationUic, hvis der er en gemt værdi.
  */
 include 'cookieManager.php';
 
 if (!empty($_GET['station']) && is_numeric($_GET['station'])) {
-	/* Efter som vi ved at $_GET['station'] er numeric, sÃ¥ er det nok pjat at bruge intval herunder */
+	/* Efter som vi ved at $_GET['station'] er numeric, så er det nok pjat at bruge intval herunder */
 	$stationUic = intval($_GET['station']);
 }
 
 $stationDropdown = array();
-if (($handle = fopen($stationsFile, "r")) !== FALSE) {
+setlocale(LC_ALL, 'da_DK.UTF8');
+if (($handle = fopen($stationsFile, "rb")) !== FALSE) {
 	while (($fileRow = fgetcsv($handle, 1000)) !== FALSE) {
 		if (count($fileRow) == 2) {
-			$station = array('name' => utf8_encode($fileRow[0]), 'uic' => $fileRow[1]);
+			$station = array('name' => $fileRow[0], 'uic' => $fileRow[1]);
 			if ($station['uic'] == $stationUic) {
-				/* Vi bruger dette til at kunne vÃ¦lge den viste station i dropdown og i overskrift og html title */
+				/* Vi bruger dette til at kunne vælge den viste station i dropdown og i overskrift og html title */
 				$station['selected'] = 'selected ';
 				$stationName = $station['name'];
 			}
@@ -78,7 +79,7 @@ foreach ($afgange as $afgang) {
 	}
 }
 
-/* Man kan tilfÃ¸je analytics kode (f.eks. google analytics) ved at placere tracking koden i en fil kaldet "analytics.txt". */
+/* Man kan tilføje analytics kode (f.eks. google analytics) ved at placere tracking koden i en fil kaldet "analytics.txt". */
 $analyticsCode = '';
 if (file_exists('analytics.txt')) {
 	$analyticsCode = file_get_contents('analytics.txt');
@@ -91,12 +92,12 @@ $data['StationName']     = $stationName;
 $data['stationDropdown'] = $stationDropdown;
 
 if ($debug) {
-	/* debug bruges i templaten til at gÃ¸re "debug sticky", nÃ¥r man vÃ¦lger en ny station. */
+	/* debug bruges i templaten til at gøre "debug sticky", når man vælger en ny station. */
 	$data['debug'] = 'yes';
 }
 
 if (count($stogAfgange) == 0) {
-	/* En lidt hurtig mÃ¥de at gÃ¦tte pÃ¥, at noget sikkert er gÃ¥et galt - burde laves bedre. */
+	/* En lidt hurtig måde at gætte på, at noget sikkert er gået galt - burde laves bedre. */
 	$data['error'] = 'Modtog ingen data fra DSB :(';
 }
 
