@@ -24,7 +24,7 @@ foreach ($rawAnswer as $stationRow) {
 	$sNavn = $stationRow->navn;
 	$sNavn = preg_replace('/ (st)$/', '', $sNavn);
 
-	array_push($stogBuffer, array( 'navn' => $sNavn, 'uic' => $stationRow->holdepladsnr));
+	$stogBuffer[$sNavn] = array( 'navn' => $sNavn, 'uic' => $stationRow->holdepladsnr);
 }
 
 /* Sorter liste alfabetisk */
