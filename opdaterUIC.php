@@ -1,4 +1,6 @@
 <?php
+require_once 'shared.php';
+
 /**
  * Opdaterer cachet liste af s-togs stationer på baggrund af data fra geo.oiorest.dk
  */
@@ -9,13 +11,7 @@ setlocale(LC_ALL, 'da_DK.UTF8');
 /* Dette kald returnerer alle s-tog stationer  */
 $oDataUrl = 'http://geo.oiorest.dk/holdepladser.json?holdepladstype=1';
 
-$cUrl = curl_init();
-curl_setopt($cUrl, CURLOPT_URL, $oDataUrl);
-curl_setopt($cUrl, CURLOPT_CONNECTTIMEOUT, 5);
-curl_setopt($cUrl, CURLOPT_RETURNTRANSFER, 1);
-
-$curlData = curl_exec($cUrl);
-curl_close($cUrl);
+$curlData = fetchUrl($oDataUrl);
 
 $rawAnswer  = json_decode($curlData);
 $stogBuffer = array();

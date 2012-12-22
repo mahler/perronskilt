@@ -20,7 +20,8 @@ Denne applikation benytter følgende kilder/dele:
 * Listen af s-tog stationer, der findes i stations.txt stammer fra http://trafikinfo.bane.dk/Trafikinformation/Stationsliste
 * Mustache.php kommer fra https://github.com/bobthecow/mustache.php - Den vedlagte version er en gammel version, som bestod af en og kun en fil.
 * De brugte kald til DSB Labs er beskrevet/dokumenteret pÃ¥ http://dsblabs.dk/webservices
-* Dokumentation af Bootstrap findes pÃ¥ http://twitter.github.com/bootstrap/ - den inkluderes fra http://www.bootstrapcdn.com/
+* Dokumentation af Bootstrap findes på http://twitter.github.com/bootstrap/ - den inkluderes fra http://www.bootstrapcdn.com/
+* "Find mig" bruger en fuktion fra http://geo.oiorest.dk/ til at finde nærmeste s-tog station.
 
 Andet
 -----
@@ -33,10 +34,49 @@ Udeståender og fejl
 Det er ikke utænkeligt, at denne applikation udvides overtid med en eller flere af følgende funktionaliteter:
 
 * Hvis der er ikke kommer svar fra DSBLab eller det ikke indeholder noget meningsfyldt, tages der ikke pænt hånd om dette.
-* Der er nogle encoding problemer mellem Latin1 (ISO-8859-1) og UTF8.
 
 Hvis du har forslag eller ønsker, er du velkommen til at bidrage med kode eller indrapportere det via Issues på Github, som du finder på:
 https://github.com/mahler/perronskilt/issues
+
+Noter om funktioner
+===================
+
+Om Cookies
+----------
+Hvis cookieMananger.php er inkluderet i index.php, så husker perronskilt sitet din seneste valgte station. Alt, der har
+med cookies at gøre, er isoleret i denne fil, og indhold i cookies bruges til at manipulere med variable, som index.php
+allerede bruger og blot ændrer i en af dem (samt skyder en cookie header med).
+
+Det er et bevist valg, at den blot husker seneste - så skal man som bruger ikke have et sted at vælge "favorit" station.
+
+
+Om "Find mig"
+-------------
+"Find mig" bruger (moderne) browseres indbyggede funktionalitet til at finde brugerens GPS position. Umiddelbart virker
+det ret fornuftigt på mobil-devices (smartphones, tables og lignende), der har GPS funktionalitet indbygget. Erfaringerne
+med desktop browsere (windows, mac, linux) er noget mere blandede. Jeg har en ide om at browserne typisk finder GPS
+på baggrund af deres IP-nummer, og at oversættelsen mellem IP nummer og en GPS position ikke er specielt fantastisk.
+
+geoProxy.php findes fordi jeg ikke har kunnet finde ud af at kalde geo.oiorest.dk direkte med et jsonp-kald.
+Browserne tillader ikke, at man kalder ajax på tværs af hostnavne og porte, hvis det ikke sker som jsonp (eller via CORS*).
+geoProxy.php agerer mellemled og kaldes af index.php via ajax, og kalder selv server-til-server til oiorest.dk - og reurnerer
+så svaret til browseren.
+
+*) se mere om CORS på http://www.html5rocks.com/en/tutorials/cors/
+
+
+Om Analytics
+------------
+Jeg benytter Google Analytics på stog.mahler.io til at se om der er nogen, der rent faktisk kommer forbi sitet.
+I PerronSkilt er det laves således, at man kan lave en fil, der hedder "analytics.txt" i hvilken man kan placere den kode
+der skal skydes ind på siden for at lave analytics - uanset om det er Google Analytics eller et andet system.
+
+Hvis analytics.txt ikke findes, så virker sitet stadigt, blot skydes ingen analytics kode ind på siden.
+
+Om footeren (på stog.mahler.io)
+-------------------------------
+Footeren er lavet ved at tilføje lidt ekstra CSS i index.mustache skabelonen, der styrer dens udseende.
+Resten af footeren er skudt ind som lidt ekstra linjer i min analytics.txt fil.
 
 
 Credits and collaboration

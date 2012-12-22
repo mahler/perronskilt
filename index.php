@@ -1,5 +1,6 @@
 <?php
-require './Mustache.php';
+require_once './Mustache.php';
+require_once './shared.php';
 
 $stationsFile = 'stations.csv';
 $msTemplate   = file_get_contents('index.mustache');
@@ -60,13 +61,7 @@ if (($handle = fopen($stationsFile, "rb")) !== FALSE) {
 $oDataUrl  = 'http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$format=json&$filter=StationUic%20eq%20';
 $oDataUrl .= "'$stationUic'";
 
-$cUrl = curl_init();
-curl_setopt($cUrl, CURLOPT_URL, $oDataUrl);
-curl_setopt($cUrl, CURLOPT_CONNECTTIMEOUT, 5);
-curl_setopt($cUrl, CURLOPT_RETURNTRANSFER, 1);
-
-$curlData = curl_exec($cUrl);
-curl_close($cUrl);
+$curlData = fetchUrl($oDataUrl);
 
 $stationsData = json_decode($curlData);
 $afgange      = $stationsData->d;

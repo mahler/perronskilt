@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>S-tog fra {{StationName}}</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
 			<style>
 				 span {
@@ -41,6 +42,28 @@
 				 .line-E {
 					 background-color: #7e79b8;
 				 }
+				/* Custom... */
+				.footer {
+                       text-align: center;
+                       padding: 30px 0;
+                       margin-top: 70px;
+                       border-top: 1px solid #e5e5e5;
+                       background-color: #f5f5f5;
+                   }
+                 .footer p {
+                     margin-bottom: 0;
+                     color: #777;
+                 }
+                 .footer-links {
+                     margin: 10px 0;
+                 }
+                 .footer-links li {
+                     display: inline;
+                     padding: 0 2px;
+                 }
+                 .footer-links li:first-child {
+                     padding-left: 0;
+                 }
 			</style>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
@@ -80,10 +103,10 @@
 	<div class="row">
 		<form name="stationsForm" method="GET">
 			{{#debug}}
-                <input type="hidden" name="debug" value="1">
+				<input type="hidden" name="debug" value="1">
 			{{/debug}}
 
-            <select name="station" onChange="document.stationsForm.submit()">
+			<select name="station" onChange="document.stationsForm.submit()">
 				{{#stationDropdown}}
 					<option {{selected}}value="{{uic}}">{{name}}</option>
 				{{/stationDropdown}}
@@ -91,6 +114,46 @@
 		</form>
 	</div>
 </div>
+
+<button onclick="javascript:findMe()">Vis nærmeste *beta*</button>
+<script type="text/javascript">
+function findMe(){
+	navigator.geolocation.getCurrentPosition(successCallback,
+			errorCallback,
+			{maximumAge:10});
+/*            {maximumAge:300000});*/
+
+    function successCallback(position) {
+		if (!(typeof(console) === "undefined")) {
+			console.log(position);
+		}
+		latData  = position.coords.latitude;
+		longData = position.coords.longitude;
+
+		$.ajax({
+			type: "GET",
+			url: 'geoProxy.php',
+			dataType: "json",
+			data: { 'long': longData, 'lat': latData },
+			jsonCallback: 'oioCallback',
+			success: oioCallback
+		});
+	}
+
+	function errorCallback(error) {
+		if (!(typeof(console) === "undefined")) {
+			console.log(error);
+		}
+	}
+
+	function oioCallback(data) {
+		console.log(data);
+		station = data[0];
+		document.location.href = '/?station=' + station['holdepladsnr'];
+	}
+}
+</script>
+
 {{{analyticsCode}}}
 </body>
 </html>
