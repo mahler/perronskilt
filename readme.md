@@ -41,6 +41,14 @@ https://github.com/mahler/perronskilt/issues
 Noter om funktioner
 ===================
 
+Om HTML'en
+----------
+Perronskilt laver valid HTML5. Det testes normalt i Google Chrome, Firefox og Safri, samt på Android (4.2.x) og iOS6
+inden upload til GitHub. Perronskilt bør som udgangspunkt kunne vises af enhver moderne velfungerende browser uden videre.
+
+Nogle af de Javascript funktioner, der bruges til "Find nærmeste" virker muligvis ikke i alle tilfælde (se nærmere nedenfor
+i afsnittet "om Find Nærmeste").
+
 Om Cookies
 ----------
 Hvis cookieMananger.php er inkluderet i index.php, så husker perronskilt sitet din seneste valgte station. Alt, der har
@@ -50,9 +58,9 @@ allerede bruger og blot ændrer i en af dem (samt skyder en cookie header med).
 Det er et bevist valg, at den blot husker seneste - så skal man som bruger ikke have et sted at vælge "favorit" station.
 
 
-Om "Find mig"
+Om "Find nærmeste"
 -------------
-"Find mig" bruger (moderne) browseres indbyggede funktionalitet til at finde brugerens GPS position. Umiddelbart virker
+"Find nærmeste" bruger (moderne) browseres indbyggede funktionalitet til at finde brugerens GPS position. Umiddelbart virker
 det ret fornuftigt på mobil-devices (smartphones, tables og lignende), der har GPS funktionalitet indbygget. Erfaringerne
 med desktop browsere (windows, mac, linux) er noget mere blandede. Jeg har en ide om at browserne typisk finder GPS
 på baggrund af deres IP-nummer, og at oversættelsen mellem IP nummer og en GPS position ikke er specielt fantastisk.
@@ -87,7 +95,7 @@ License
 =======
 All original code provided by in this project is licensed under the MIT license.
 
-Copyright (c) 2012 Flemming Mahler 
+Copyright (c) 2012-2013 Flemming Mahler
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
 to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
