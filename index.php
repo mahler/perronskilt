@@ -9,6 +9,9 @@ $debug        = false;
 
 if (isset($_GET['debug'])) {
 	$debug = true;
+
+	/* debug bruges i templaten til at gøre "debug sticky", når man vælger en ny station. */
+	$data['debug'] = 'yes';
 }
 
 if (isset($_GET['forceUpdate'])) {
@@ -74,22 +77,16 @@ foreach ($afgange as $afgang) {
 	}
 }
 
-/* Man kan tilføje analytics kode (f.eks. google analytics) ved at placere tracking koden i en fil kaldet "analytics.txt". */
-$analyticsCode = '';
 if (file_exists('analytics.txt')) {
+	/* Man kan tilføje analytics kode (f.eks. google analytics) ved at placere tracking koden i en fil kaldet "analytics.txt". */
 	$analyticsCode = file_get_contents('analytics.txt');
-}
+	$data['analyticsCode']   = $analyticsCode;
 
-$data['analyticsCode']   = $analyticsCode;
+}
 
 $data['departures']      = $stogAfgange;
 $data['StationName']     = $stationName;
 $data['stationDropdown'] = $stationDropdown;
-
-if ($debug) {
-	/* debug bruges i templaten til at gøre "debug sticky", når man vælger en ny station. */
-	$data['debug'] = 'yes';
-}
 
 if (count($stogAfgange) == 0) {
 	/* En lidt hurtig måde at gætte på, at noget sikkert er gået galt - burde laves bedre. */
