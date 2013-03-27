@@ -26,7 +26,7 @@ if (!file_exists($stationsFile)) {
 
 /**
  * stationuic 8600760 er Sydhavn s-tog station.
- * se mere på http://dsblabs.dk/webservices/webservicestationsafgange
+ * se mere på http://www.dsb.dk/dsb-labs/webservice-stationsafgange/l
  * se mere om oData på http://www.odata.org/documentation/uri-conventions
  **/
 $stationUic  = 8600760;
@@ -61,19 +61,19 @@ if (($handle = fopen($stationsFile, "rb")) !== FALSE) {
 	fclose($handle);
 }
 
-$oDataUrl  = 'http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?$format=json&$filter=StationUic%20eq%20';
-$oDataUrl .= "'$stationUic'";
-
-$curlData = fetchUrl($oDataUrl);
-
+$oDataUrl     = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Queue()?\$format=json&\$filter=StationUic%20eq%20'$stationUic'";
+$curlData     = fetchUrl($oDataUrl);
 $stationsData = json_decode($curlData);
 $afgange      = $stationsData->d;
+$stogAfgange  = array();
 
-$stogAfgange = array();
-foreach ($afgange as $afgang) {
+/* Check at vi fik nogle afgange... */
+if (is_array($afgange)) {
+	foreach ($afgange as $afgang) {
 
-	if (isset($afgang->Line)) {
-		array_push($stogAfgange, $afgang);
+		if (isset($afgang->Line)) {
+			array_push($stogAfgange, $afgang);
+		}
 	}
 }
 
@@ -81,7 +81,6 @@ if (file_exists('analytics.txt')) {
 	/* Man kan tilføje analytics kode (f.eks. google analytics) ved at placere tracking koden i en fil kaldet "analytics.txt". */
 	$analyticsCode = file_get_contents('analytics.txt');
 	$data['analyticsCode']   = $analyticsCode;
-
 }
 
 $data['departures']      = $stogAfgange;
@@ -99,8 +98,5 @@ echo $mustache->render($msTemplate, $data, array(), array('charset' => 'UTF8'));
 if ($debug) {
 	echo "<hr><h2>Template data</h2>\n<pre>";
 	var_dump($data);
-	echo "</pre>";
-
-	echo 'oData URL:<br>', $oDataUrl;
+	echo '</pre><br>oData URL:<br>', $oDataUrl;
 }
-?>
