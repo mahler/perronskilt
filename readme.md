@@ -8,11 +8,11 @@ The code here should be considered for fun only, and not suited for production u
 
 Perronskilt
 ===========
-Følgende filer indeholder en miniature applikation skrevet i PHP, som benytter Mustache templates, 
-Bootstrap CSS og DSBLabs API, der giver adgang til at hente blandt andet de kommende afgange for en 
+Følgende filer indeholder en miniature applikation skrevet i PHP, som benytter Mustache templates,
+Bootstrap CSS og DSBLabs API, der giver adgang til at hente blandt andet de kommende afgange for en
 given station. Du kan med "Perronskilt" vise en enkelt webside, hvor de kommende tog vises i en simpel tabel.
 
-Koden her er lavet som en simpel demonstration, ikke noget, der er tiltænkt egentlig produktion. 
+Koden her er lavet som en simpel demonstration, ikke noget, der er tiltænkt egentlig produktion.
 
 Kilder
 ------
@@ -28,6 +28,15 @@ Andet
 * Din PHP installation skal kunne anvende Curl (det kan de fleste webhoteller uden videre).
 * Denne PHP er udviklet under PHP 5.4.9, men bør i hvert fald fungere under alle versioner tilbage til PHP 5.2.
 
+Udvikling
+---------
+Udviklingen af perronskilt kan enkelt ske på en computer, hvis blot PHP er installeret (i version 5.4). Perronskilt kræver
+ikke nogen database eller særlige PHP moduler, og kan uden videre afvikles af PHP 5.4's indbyggede webserver.
+* Linux: Du kan via din lokale package manager installere PHP 5.4.
+* Mac:
+ * Det anbefales det at installere PHP 5.4 via http://php-osx.liip.ch/
+ * Du kan på Mac'en også benytte den udgave af PHP og Apache webserveren, der følger med OSX.
+* Windows: PHP websitet beskriver forskellige måder PHP kan installeres under windows - se http://php.net/manual/en/install.windows.php.
 
 Udeståender og fejl
 -------------------
@@ -97,15 +106,15 @@ All original code provided by in this project is licensed under the MIT license.
 
 Copyright (c) 2012-2013 Flemming Mahler
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
-to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
 and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
-ALIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ALIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 
 - http://opensource.org/licenses/mit-license.php
