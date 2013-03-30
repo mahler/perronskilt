@@ -39,6 +39,8 @@ $stationName = 'Sydhavn';
  */
 include 'cookieManager.php';
 
+//include 'settings.php';
+
 if (!empty($_GET['station']) && is_numeric($_GET['station'])) {
 	/* Efter som vi ved at $_GET['station'] er numeric, så er det nok pjat at bruge intval herunder */
 	$stationUic = intval($_GET['station']);
@@ -65,14 +67,26 @@ $oDataUrl     = "http://traindata.dsb.dk/stationdeparture/opendataprotocol.svc/Q
 $curlData     = fetchUrl($oDataUrl);
 $stationsData = json_decode($curlData);
 $afgange      = $stationsData->d;
-$stogAfgange  = array();
+$stogAfgange  = array(
+					0 => array('trainHeading' => 'Nord', 'directionDepartures' => array()),
+					1 => array('trainHeading' => 'Syd', 'directionDepartures' => array()),
+);
 
 /* Check at vi fik nogle afgange... */
 if (is_array($afgange)) {
 	foreach ($afgange as $afgang) {
-
 		if (isset($afgang->Line)) {
-			array_push($stogAfgange, $afgang);
+			/* Split visningen på baagrund af togenes retning. Alle s-togs retninger er ser ud til _altid_ at være
+			 * nord eller syd. Afhensyn til Mustache bruges 0 og 1 i templaten til at samle dem. Hvis der er tog, som
+			 * ikke kører mod nord eller syd, så placeres disse under "Nord".
+			*/
+			if (isset($afgang->Direction)) {
+				$retning = 0; // Default retning er nord
+				if ($afgang->Direction == 'Syd') {
+					$retning = 1;
+				}
+				array_push($stogAfgange[$retning]['directionDepartures'], $afgang);
+			}
 		}
 	}
 }
@@ -83,7 +97,7 @@ if (file_exists('analytics.txt')) {
 	$data['analyticsCode']   = $analyticsCode;
 }
 
-$data['departures']      = $stogAfgange;
+$data['stationDepartures']      = $stogAfgange;
 $data['StationName']     = $stationName;
 $data['stationDropdown'] = $stationDropdown;
 
