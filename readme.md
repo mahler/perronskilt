@@ -1,3 +1,9 @@
+DEAD CODE
+=========
+This repository does not have any value but for historic purposes. The DSB Labs webservices which powered the 
+webapplication does not exist anymore (or have moved to a new setting). Please don't use this for anyting or
+expect it to be useful in any way.
+
 Perronskilt (in English)
 ========================
 This is a miniture PHP app, which utilizes Mustache, Bootstrap CSS and a lab feature from the Danish State Railways.
